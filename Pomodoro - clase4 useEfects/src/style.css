@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 30px;
+    color: bisque;
+    background-color: rgb(26, 24, 39);
+}
+.timer {
+    font-size: 75px;
+}
+button {
+    padding: 15px;
+    background-color: rgb(207, 132, 132);
+    border: none;
+    border-radius: 10px;
+    margin: 15px;
+}
+button:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}

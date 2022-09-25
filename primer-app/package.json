@@ -1,0 +1,34 @@
+{
+
+  "name": "primer-app",
+
+  "version": "0.1.0",
+  
+  "main": "App.js",
+
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel src/index.html",
+    "format": "prettier \"src/**/*.{js, css, html}\" --write",
+    "lint": "eslint \"src/**/*.{js,jsx}\" "
+  },
+    
+  "devDependencies": {
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "parcel-bundler": "^1.12.5",
+    "prettier": "^2.7.1"
+  }
+
+}
