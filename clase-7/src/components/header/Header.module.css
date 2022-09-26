@@ -1,0 +1,28 @@
+.header {
+    height: 100vh;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    background-color: black;
+}
+.options {
+    margin-left: 0;
+    padding-left: 0;
+    flex: 1;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.option {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.option a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+}

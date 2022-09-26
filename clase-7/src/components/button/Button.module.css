@@ -1,0 +1,32 @@
+a {
+    text-decoration: none;
+}
+.custom_button {
+    min-width: 165px;
+    width: auto;
+    height: 50px;
+    letter-spacing: 0.5px;
+    line-height: 50px;
+    font-size: 12px;
+    padding: 0 35px;
+    color: #fff;
+    background-color: black;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+.custom_button:hover {
+    background-color: #fff;
+    color: black;
+    border: solid 1px black;
+}
+.custom_button.inverted {
+    background-color: #fff;
+    color: black;
+    border: solid 1 px black;
+}
+.custom_button.inverted:hover {
+    color: #fff;
+    background-color: black;
+}
