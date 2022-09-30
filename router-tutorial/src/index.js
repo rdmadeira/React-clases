@@ -4,10 +4,11 @@ import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root, {
   loader as rootLoader,
-  action as actionRoot,
+  action as rootAction,
 } from './routes/Root.jsx';
 import ErrorPage from './error-page.jsx';
 import Contact, { loader as contactLoader } from './routes/Contact.jsx';
+import EditContact, { action as editAction } from './routes/edit.jsx';
 
 const router = createBrowserRouter([
   {
@@ -15,13 +16,19 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     loader: rootLoader,
-    action: actionRoot,
+    action: rootAction,
     children: [
       // Para que el component Contact si inserte adentro del root y no en una pagina nueva
       {
-        path: '/contacts/:contactId',
+        path: 'contacts/:contactId',
         element: <Contact />,
         loader: contactLoader,
+      },
+      {
+        path: 'contacts/:contactId/edit',
+        element: <EditContact />,
+        loader: contactLoader,
+        action: editAction,
       },
     ],
   },

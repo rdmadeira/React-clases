@@ -3,18 +3,27 @@ import { Form, useLoaderData } from 'react-router-dom';
 import { getContact } from '../contacts';
 
 export async function loader({ params }) {
-  await getContact(params.contactId);
+  return getContact(params.contactId);
 }
 
 export default function Contact() {
+  /*  const contact = {
+    first: 'Your',
+    last: 'Name',
+    avatar: 'https://placekitten.com/g/200/200',
+    twitter: 'your_handle',
+    notes: 'Some notes',
+    favorite: true,
+  }; */
   const contact = useLoaderData();
+
   return (
     <div id="contact">
       <div>
         <img
+          key={contact.avatar || contact.id}
           src={contact.avatar || null}
-          alt={`${contact.first} ${contact.last}`}
-          key={contact.avatar}
+          alt={``}
         />
       </div>
       <div>
