@@ -9,6 +9,8 @@ import Root, {
 import ErrorPage from './error-page.jsx';
 import Contact, { loader as contactLoader } from './routes/Contact.jsx';
 import EditContact, { action as editAction } from './routes/edit.jsx';
+import { action as destroyAction } from './routes/destroy.jsx';
+import Index from './routes/index.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,10 @@ const router = createBrowserRouter([
     children: [
       // Para que el component Contact si inserte adentro del root y no en una pagina nueva
       {
+        index: true,
+        element: <Index />,
+      },
+      {
         path: 'contacts/:contactId',
         element: <Contact />,
         loader: contactLoader,
@@ -29,6 +35,11 @@ const router = createBrowserRouter([
         element: <EditContact />,
         loader: contactLoader,
         action: editAction,
+      },
+      {
+        path: 'contacts/:contactId/destroy',
+        action: destroyAction,
+        errorElement: <div>Oops! There was an error.</div>,
       },
     ],
   },
