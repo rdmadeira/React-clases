@@ -1,0 +1,19 @@
+nav {
+    display: flex;
+    column-gap: 30px;
+    height: 20vh;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px 20px;
+    background-color: cadetblue;
+}
+
+a {
+    text-decoration: none;
+    padding: 10px;
+}
+
+.active {
+    background-color: black;
+    color: aliceblue;
+}
