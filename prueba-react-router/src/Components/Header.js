@@ -1,8 +1,17 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import './header.css';
 
 const Header = () => {
+  const { search } = useLocation();
+
+  //let query = new URLSearchParams(location);
+  //query.set('name', 'rodrigo');
+
+  useEffect(() => {
+    console.log(search);
+  }, [search]);
+
   return (
     <div>
       <nav>
@@ -11,6 +20,11 @@ const Header = () => {
           to="/"
           end>
           Home
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? 'active' : '')}
+          to="/users">
+          Users
         </NavLink>
         <NavLink
           className={({ isActive }) => (isActive ? 'active' : '')}

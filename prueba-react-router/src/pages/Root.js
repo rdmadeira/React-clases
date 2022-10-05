@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Header from '../Components/Header';
 import Home from './Home';
+import Users from './Users';
 import Contact from './Contact';
 import About from './About';
 
@@ -14,10 +16,11 @@ export default function Root() {
         <Header />
         <div id="content">
           <Routes>
-            <Route exact path="/" element={<Home />} index={true} />
-            <Route exact path="/contact" element={<Contact />} />
-            <Route exact path="/about" element={<About />} />
-            <Route exact path="*" element={<Error />} />
+            <Route path="/" element={<Home />} index={true} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<Error />} />
           </Routes>
         </div>
       </Router>
