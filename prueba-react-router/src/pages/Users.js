@@ -1,11 +1,12 @@
 import React from 'react';
-import { Form } from 'react-router-dom';
+import { Form, Outlet, useLoaderData } from 'react-router-dom';
 
 const Users = () => {
+  const users = useLoaderData();
+  console.log(users);
   return (
     <>
-      <h1>Ingrese nombre de usuario</h1>
-      <Form>
+      <Form method="post" id="form-username">
         <input
           type="text"
           name="username"
@@ -14,6 +15,7 @@ const Users = () => {
         />
         <button type="submit">Enviar</button>
       </Form>
+      <Outlet />
     </>
   );
 };
