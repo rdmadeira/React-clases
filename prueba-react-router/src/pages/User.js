@@ -1,10 +1,16 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const User = () => {
-  let username = useLoaderData();
+  //let username = useLoaderData();
+  let { username } = useParams();
 
-  return <div>This is User: {username}</div>;
+  return (
+    <div id="user-div">
+      <h3>Current User:</h3>
+      <p>{username}</p>
+    </div>
+  );
 };
 
 export default User;

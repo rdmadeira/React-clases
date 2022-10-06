@@ -55,13 +55,7 @@ const router = createBrowserRouter(
           params.username = username;
           return redirect(`/users/${params.username}`);
         }}>
-        <Route
-          path=":username"
-          element={<User />}
-          loader={({ params }) => {
-            return params.username;
-          }}
-        />
+        <Route path=":username" element={<User />} />
       </Route>
       <Route path="/contact" element={<Contact />} />
       <Route path="/about" element={<About />} />
