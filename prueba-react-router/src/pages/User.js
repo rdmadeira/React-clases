@@ -2,7 +2,6 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 const User = () => {
-  //let username = useLoaderData();
   let { username } = useParams();
 
   return (

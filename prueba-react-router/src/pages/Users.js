@@ -1,9 +1,9 @@
 import React from 'react';
-import { Form, Outlet, useLoaderData } from 'react-router-dom';
+import { Form, Outlet } from 'react-router-dom';
 
 const Users = () => {
-  const users = useLoaderData();
-  console.log(users);
+  //const users = useLoaderData();
+
   return (
     <>
       <Form method="post" id="form-username">
