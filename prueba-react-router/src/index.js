@@ -14,6 +14,7 @@ import Users from './pages/Users';
 import User from './pages/User';
 import Contact from './pages/Contact';
 import About from './pages/About';
+import ErrorBoundary from './pages/Error';
 
 /* function getUsernames(username) {
   let users = JSON.parse(localStorage.getItem('users')) || [];
@@ -25,16 +26,18 @@ function setUsername(username) {
   let users = JSON.parse(localStorage.getItem('users')) || [];
   let newUser = new Object();
   newUser.username = username;
+  newUser.id = users.length + 1;
   users.push(newUser);
   localStorage.setItem('users', JSON.stringify(users));
-  return newUser.username;
+  return newUser;
 }
 
 function findOrSetUsername(username) {
-  let users = JSON.parse(localStorage.getItem('users')) || [];
-  let user = users.filter((user) => user.username === username);
-  console.log(user);
-  return user.length >= 1 ? username : setUsername(username);
+  if (username !== '') {
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    let user = users.filter((user) => user.username === username);
+    return user.length >= 1 ? user[0] : setUsername(username);
+  }
 }
 
 const router = createBrowserRouter(
@@ -51,11 +54,14 @@ const router = createBrowserRouter(
         action={async ({ request, params }) => {
           let formData = await request.formData();
           let username = formData.get('username');
-          findOrSetUsername(username);
-          params.username = username;
-          return redirect(`/users/${params.username}`);
-        }}>
-        <Route path=":username" element={<User />} />
+          if (username === '') {
+            return;
+          }
+          params = findOrSetUsername(username);
+          return redirect(`/users/${params.id}`);
+        }}
+        errorElement={<ErrorBoundary />}>
+        <Route path=":id" element={<User />} />
       </Route>
       <Route path="/contact" element={<Contact />} />
       <Route path="/about" element={<About />} />

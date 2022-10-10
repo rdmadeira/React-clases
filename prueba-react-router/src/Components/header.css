@@ -1,19 +1,20 @@
 nav {
-    display: flex;
-    column-gap: 30px;
-    height: 20vh;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding: 10px 20px;
-    background-color: cadetblue;
+  display: flex;
+  column-gap: 30px;
+  height: 20vh;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 10px 20px 0;
+  background-color: rgb(184, 214, 215);
 }
 
 a {
-    text-decoration: none;
-    padding: 10px;
+  text-decoration: none;
+  padding: 10px;
+  color: black;
 }
 
 .active {
-    background-color: black;
-    color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.167);
+  color: aliceblue;
 }
