@@ -1,11 +1,10 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import './input.css';
 import { validate } from '../../utils/validators';
 
 const inputReducer = (state, action) => {
   switch (action.type) {
     case 'CHANGE':
-      console.log(state);
       return {
         ...state,
         value: action.val,
@@ -27,6 +26,14 @@ const Input = (props) => {
     isValid: props.initialValid || false,
     isTouche: false,
   });
+
+  const { isValid, value } = inputState;
+  const { onInput, id } = props;
+
+  useEffect(() => {
+    onInput(id, value, isValid);
+    //console.log(id, value, isValid);
+  }, [isValid, value, onInput, id]);
 
   const changeHandler = (event) => {
     dispatch({

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '../../components/card/Card.jsx';
 import Input from '../../components/input/Input.jsx';
 import Button from '../../components/button/Button.jsx';
+
 import './auth.css';
 
 import {
@@ -11,21 +12,78 @@ import {
   VALIDATOR_MAXLENGTH,
 } from '../../utils/validators';
 
+import useForm from '../../hooks/useForm';
+
 const Auth = () => {
+  const [isLoginMode, setisLoginMode] = useState(true);
+
+  const [formState, inputHandler, setFormData] = useForm(
+    {
+      email: {
+        value: '',
+        isValid: false,
+      },
+      password: {
+        value: '',
+        isValid: false,
+      },
+    },
+    false
+  );
+  // console.log(formState);
+
+  const isLoginModeHandler = () => {
+    if (!isLoginMode) {
+      setFormData(
+        {
+          email: {
+            value: '',
+            isValid: false,
+          },
+          password: {
+            value: '',
+            isValid: false,
+          },
+        },
+        formState.inputs.email?.isValid && formState.inputs.password?.isValid
+      );
+    } else {
+      setFormData(
+        {
+          ...formState.inputs,
+          nombre: {
+            value: '',
+            isValid: false,
+          },
+        },
+        false
+      );
+    }
+    setisLoginMode((prevMode) => !prevMode);
+  };
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log(formState.inputs);
+  };
+
   return (
     <>
       <Card className="authentication">
         <h2>Login</h2>
-        <form>
-          <Input
-            element="input"
-            placeholder="Nombre"
-            type="text"
-            id="nombre"
-            label="Nombre"
-            validators={[VALIDATOR_REQUIRE()]}
-            errorText="Campo obligatório"
-          />
+        <form onSubmit={onSubmitHandler}>
+          {!isLoginMode && (
+            <Input
+              element="input"
+              placeholder="Nombre"
+              type="text"
+              id="nombre"
+              label="Nombre"
+              validators={[VALIDATOR_REQUIRE()]}
+              errorText="Campo obligatório"
+              onInput={inputHandler}
+            />
+          )}
           <Input
             element="input"
             placeholder="Email"
@@ -34,6 +92,7 @@ const Auth = () => {
             label="Email"
             validators={[VALIDATOR_EMAIL()]}
             errorText="Ingresá un email válido"
+            onInput={inputHandler}
           />
           <Input
             element="input"
@@ -43,9 +102,15 @@ const Auth = () => {
             label="Password"
             validators={[VALIDATOR_MINLENGTH(6), VALIDATOR_MAXLENGTH(12)]}
             errorText="Ingresá entre 6 y 12 caracteres"
+            onInput={inputHandler}
           />
-          <Button>Login</Button>
+          <Button type="submit" disabled={!formState.isValid}>
+            {isLoginMode ? 'Login' : 'Sign Up'}
+          </Button>
         </form>
+        <Button type="submit" onClick={isLoginModeHandler} inverted>
+          Switch to {isLoginMode ? 'Sign Up' : 'Login'}
+        </Button>
       </Card>
     </>
   );

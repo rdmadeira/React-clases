@@ -1,32 +1,40 @@
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 .custom_button {
-    min-width: 165px;
-    width: auto;
-    height: 50px;
-    letter-spacing: 0.5px;
-    line-height: 50px;
-    font-size: 12px;
-    padding: 0 35px;
-    color: #fff;
-    background-color: black;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
+  min-width: 165px;
+  width: auto;
+  height: 50px;
+  letter-spacing: 0.5px;
+  line-height: 50px;
+  font-size: 12px;
+  padding: 0 35px;
+  color: #fff;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.custom_button:active:disabled,
+.custom_button:hover:disabled,
+.custom_button:disabled {
+  background-color: #ccc;
+  color: #979797;
+  cursor: not-allowed;
 }
 .custom_button:hover {
-    background-color: #fff;
-    color: black;
-    border: solid 1px black;
+  background-color: #fff;
+  color: black;
+  border: solid 1px black;
 }
 .custom_button.inverted {
-    background-color: #fff;
-    color: black;
-    border: solid 1 px black;
+  background-color: #fff;
+  color: black;
+  border: solid 1 px black;
 }
 .custom_button.inverted:hover {
-    color: #fff;
-    background-color: black;
+  color: #fff;
+  background-color: black;
 }
