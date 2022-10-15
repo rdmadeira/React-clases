@@ -30,20 +30,13 @@ const Auth = () => {
     },
     false
   );
-  // console.log(formState);
+  console.log(formState);
 
   const isLoginModeHandler = () => {
     if (!isLoginMode) {
       setFormData(
         {
-          email: {
-            value: '',
-            isValid: false,
-          },
-          password: {
-            value: '',
-            isValid: false,
-          },
+          ...formState.inputs,
         },
         formState.inputs.email?.isValid && formState.inputs.password?.isValid
       );
@@ -52,8 +45,8 @@ const Auth = () => {
         {
           ...formState.inputs,
           nombre: {
-            value: '',
-            isValid: false,
+            value: formState.inputs.nombre?.value || '',
+            isValid: formState.inputs.nombre?.isValid || '',
           },
         },
         false
