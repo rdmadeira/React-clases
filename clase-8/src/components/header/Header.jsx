@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import "./header.css";
+const API_URL = 'https://api.lyrics.ovh';
 
-const Header = ({ suggestValue }) => {
+const Header = ({ fetchSongs, showLyric }) => {
   const [inputValue, setinputValue] = useState("");
 
-  function valueHandle(e) {
-    const string = e.target.value;
-    setinputValue(string);
-  }
-
-  function formHandler(e) {
+  const formHandler = (e) => {
+    console.log(inputValue);
+    
     e.preventDefault();
-    suggestValue(inputValue);
+    fetchSongs(`${API_URL}/suggest/${inputValue}`);
+    showLyric(false)
   }
 
   return (
@@ -22,8 +21,8 @@ const Header = ({ suggestValue }) => {
           type="text"
           id="search"
           placeholder="Canción o Artista...."
-          onChange={valueHandle}
           value={inputValue}
+          onChange={(e) => setinputValue(e.target.value)}
         />
         <button onClick={formHandler}>Buscar</button>
       </form>
