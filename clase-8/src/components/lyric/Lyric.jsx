@@ -11,6 +11,7 @@ function createMarkup() {
 return (
 <div>
      <h2><strong>{artist}</strong> - {songTitle} </h2>
+     
     <span dangerouslySetInnerHTML={createMarkup()}/>
   </div>);
 };

@@ -13,6 +13,8 @@ const Songslist = ({ songs, error, loading, displaySong, fetchSongs}) => {
         {/* {error && <ErrorBoundary />} // todavía no creado
         {loading && <Loading />}       // todavía no creado */}     
       </ul>
+
+      {/* https://cors-anywhere.herokuapp.com/corsdemo - para solicitar acceso limitado. */}
       <div className="container centered">
         {songs?.prev ? 
         (<button className="btn" onClick={() => fetchSongs(`https://cors-anywhere.herokuapp.com/${songs.prev}`)}>Anterior</button>) : ('')
