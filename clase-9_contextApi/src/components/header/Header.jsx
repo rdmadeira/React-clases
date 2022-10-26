@@ -1,16 +1,20 @@
 import React, { useState, useContext } from "react";
 import "./header.css";
 import { SongsContext } from "../../context/SongsContext";
+import { fetchSongs } from "../../actions/songsActions";
 //const API_URL = "https://api.lyrics.ovh";
 
 const Header = () => {
   const [inputValue, setinputValue] = useState("");
-  const { hola } = useContext(SongsContext);
-  const formHandler = () => {};
+  const { dispatch } = useContext(SongsContext);
+  const formHandler = (e) => {
+    e.preventDefault();
+    dispatch((dispatch) => fetchSongs(dispatch, inputValue)); // 1h18min
+  };
 
   return (
     <header>
-      <h1>{hola}, Canciones Piolas App</h1>
+      <h1>Canciones Piolas App</h1>
       <form id="form">
         <input
           type="text"
