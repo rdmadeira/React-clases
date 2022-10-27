@@ -1,8 +1,9 @@
 import { ENDPOINT, ENDPOINT_LYRIC, CORS_URL } from "../constants/endpoints";
+import $ from "jquery";
 
 export const fetchSongs = (dispatch, suggest) => {
   dispatch("LOADING");
-  fetch(`${ENDPOINT}/${suggest}`)
+  fetch(`${ENDPOINT}/suggest/${suggest}`)
     .then((res) => res.json())
     .then((data) =>
       dispatch({
@@ -11,5 +12,36 @@ export const fetchSongs = (dispatch, suggest) => {
           songs: data.data,
         },
       })
-    ); // payload es el nombre de la propriedad que se usa en Redux que trae la información
+    ); // payload es el nombre de la propriedad del objeto action que se usa en Redux que trae la información
+};
+
+export const fetchLyric = (dispatch, artist, song) => {
+  const url = `${CORS_URL}/${ENDPOINT_LYRIC}?artist=${artist}&song=${song}`;
+  dispatch({ type: "LOADING" });
+  const data = null;
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === this.DONE) {
+      const datos = this;
+      let $xml = $($.parseXML(datos.responseText));
+
+      $xml.find("Lyric").each(function (index, elem) {
+        const lyric = elem.firstChild.nodeValue;
+
+        dispatch({
+          type: "LYRIC_RESPONSE",
+          artist: artist,
+          payload: {
+            song: { artist: artist, title: song, lyric: lyric },
+          },
+        });
+      });
+    }
+  });
+
+  xhr.open("GET", url);
+
+  xhr.send(data); // payload es el nombre de la propriedad del objeto action que se usa en Redux que trae la información
 };

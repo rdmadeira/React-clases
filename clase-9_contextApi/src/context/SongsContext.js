@@ -8,12 +8,24 @@ const songsReducer = (state, action) => {
       return {
         ...state,
         loading: true,
+        showLyric: false,
       };
     case "SONGS_RESPONSE":
       return {
         ...state,
         loading: false,
+        showLyric: false,
         songs: action.payload.songs,
+      };
+    case "LYRIC_RESPONSE":
+      return {
+        ...state,
+        loading: false,
+        songs: [],
+        showLyric: true,
+        lyric: action.payload.song.lyric,
+        artist: action.payload.song.artist,
+        songTitle: action.payload.song.title,
       };
 
     default:
@@ -28,6 +40,7 @@ const initialState = {
   showLyric: false,
   artist: null,
   songTitle: null,
+  lyric: null,
   prev: null,
   next: null,
 };
