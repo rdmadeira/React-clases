@@ -2,9 +2,19 @@ import React, { useContext } from "react";
 import { SongsContext } from "../../context/SongsContext.js";
 import Song from "../song/Song.jsx";
 import "./songs-list.css";
+import { fetchSongs } from "../../actions/songsActions.js";
 
 const Songslist = () => {
-  const { songsState } = useContext(SongsContext);
+  const { songsState, dispatch } = useContext(SongsContext);
+
+  const showPrev = () => {
+    dispatch((dispatch) => fetchSongs(dispatch, "", songsState.prev));
+  };
+
+  const showNext = () => {
+    dispatch((dispatch) => fetchSongs(dispatch, "", songsState.next));
+  };
+
   return (
     <>
       <ul className="songs">
@@ -17,8 +27,20 @@ const Songslist = () => {
 
       {/* https://cors-anywhere.herokuapp.com/corsdemo - para solicitar acceso limitado. */}
       <div className="container centered">
-        {songsState.prev ? <button className="btn">Anterior</button> : ""}
-        {songsState.next ? <button className="btn">Siguiente</button> : ""}
+        {songsState.prev ? (
+          <button className="btn" onClick={showPrev}>
+            Anterior
+          </button>
+        ) : (
+          ""
+        )}
+        {songsState.next ? (
+          <button className="btn" onClick={showNext}>
+            Siguiente
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );

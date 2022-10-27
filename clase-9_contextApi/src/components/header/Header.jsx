@@ -9,7 +9,7 @@ const Header = () => {
   const { dispatch } = useContext(SongsContext);
   const formHandler = (e) => {
     e.preventDefault();
-    dispatch((dispatch) => fetchSongs(dispatch, inputValue)); // 1h18min
+    dispatch((dispatch) => fetchSongs(dispatch, inputValue));
   };
 
   return (

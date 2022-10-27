@@ -1,15 +1,18 @@
 import { ENDPOINT, ENDPOINT_LYRIC, CORS_URL } from "../constants/endpoints";
 import $ from "jquery";
 
-export const fetchSongs = (dispatch, suggest) => {
-  dispatch("LOADING");
-  fetch(`${ENDPOINT}/suggest/${suggest}`)
+export const fetchSongs = (dispatch, suggest, proxy = false) => {
+  const url = proxy ? CORS_URL + "/" + proxy : `${ENDPOINT}/suggest/${suggest}`;
+  dispatch({ type: "LOADING" });
+  fetch(url)
     .then((res) => res.json())
     .then((data) =>
       dispatch({
         type: "SONGS_RESPONSE",
         payload: {
           songs: data.data,
+          prev: data.prev,
+          next: data.next,
         },
       })
     ); // payload es el nombre de la propriedad del objeto action que se usa en Redux que trae la información

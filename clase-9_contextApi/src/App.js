@@ -11,9 +11,15 @@ function App() {
   const { songsState } = useContext(SongsContext);
   return (
     <>
+      <p style={{ "text-align": "center" }}>
+        Hay que activar el cors para las letras:
+        https://cors-anywhere.herokuapp.com
+      </p>
       <Header />
       <div className="container">
-        {!songsState.showLyric ? (
+        {songsState.loading ? (
+          <p>Loading ....</p>
+        ) : !songsState.showLyric ? (
           <Songslist />
         ) : (
           <Lyric

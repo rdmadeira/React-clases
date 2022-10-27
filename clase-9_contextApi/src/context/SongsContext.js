@@ -16,6 +16,8 @@ const songsReducer = (state, action) => {
         loading: false,
         showLyric: false,
         songs: action.payload.songs,
+        prev: action.payload.prev,
+        next: action.payload.next,
       };
     case "LYRIC_RESPONSE":
       return {
