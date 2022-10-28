@@ -11,7 +11,7 @@ function App() {
   const { songsState } = useContext(SongsContext);
   return (
     <>
-      <p style={{ "text-align": "center" }}>
+      <p style={{ textAlign: "center" }}>
         Hay que activar el cors para las letras:
         https://cors-anywhere.herokuapp.com
       </p>
