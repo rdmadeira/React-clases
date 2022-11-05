@@ -6,6 +6,8 @@ import './formuser.css';
 import { useEffect } from 'react';
 import { setUsername } from '../../utils/utils.js';
 
+// Este componente tiene demasiadas funciones, habria que descomponer en otros componentes y/o hooks
+
 function reducer(state, action) {
   switch (action.type) {
     case 'INPUT_CHANGE':
@@ -70,7 +72,7 @@ const FormUser = ({ users }) => {
       formState.isLogin === false &&
       formState.inputs.name
     ) {
-      // return (location.href = '../users');
+      formState.isLogin === true;
     }
   }, [formState.submit]);
 
