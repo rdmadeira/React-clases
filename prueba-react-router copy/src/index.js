@@ -15,7 +15,7 @@ import User from './pages/User';
 import Contact from './pages/Contact';
 import About from './pages/About';
 import ErrorBoundary from './pages/Error';
-// import { findOrSetUsername } from './utils/utils';
+import { findOrSetUsername } from './utils/utils';
 
 /* function getUsernames(username) {
   let users = JSON.parse(localStorage.getItem('users')) || [];
@@ -27,8 +27,6 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route path="/" element={<Home />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/about" element={<About />} />
       <Route
         path="/users"
         element={<Users />}
@@ -42,11 +40,14 @@ const router = createBrowserRouter(
           if (username === '') {
             return;
           }
-
+          params = findOrSetUsername(username);
           return redirect(`/users/${params.id}`);
         }}
-        errorElement={<ErrorBoundary />}></Route>
-      <Route path=":id" element={<User />} />
+        errorElement={<ErrorBoundary />}>
+        <Route path=":id" element={<User />} />
+      </Route>
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/about" element={<About />} />
     </Route>
   )
 );

@@ -1,0 +1,17 @@
+#user-div {
+  border: solid 1px gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+
+  height: 100%;
+}
+
+#user-div p {
+  padding: 2vw;
+  border: 2px solid gray;
+  border-radius: 25px;
+  margin: 50px;
+}

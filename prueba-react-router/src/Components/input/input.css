@@ -1,0 +1,25 @@
+.inputCtn {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px;
+}
+.inputCtn label {
+    font-size: 1rem;
+}
+.inputCtn input {
+    padding: 9px;
+    border: none;
+}
+.inputCtn input::selection {
+    background-color: white;
+}
+
+
+.inputInvalid {
+    outline: red 1px solid;
+    background-color: rgb(242, 160, 160);
+    border: none;
+}
+.inputInvalidDiv {
+    border: 1px red solid;
+}

@@ -1,0 +1,9 @@
+#form-username {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 50px;
+    border: solid 1.5px rgb(184, 214, 215);
+    border-radius: 25px;
+    row-gap: 25px
+    ;
+}

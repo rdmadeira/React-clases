@@ -14,6 +14,11 @@ const Header = () => {
         </NavLink>
         <NavLink
           className={({ isActive }) => (isActive ? 'active' : '')}
+          to="/users">
+          Users
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? 'active' : '')}
           to="/contact">
           Contact
         </NavLink>
@@ -21,11 +26,6 @@ const Header = () => {
           className={({ isActive }) => (isActive ? 'active' : '')}
           to="/about">
           About
-        </NavLink>
-        <NavLink
-          className={({ isActive }) => (isActive ? 'active' : '')}
-          to="/users">
-          Log in/Sign Up
         </NavLink>
       </nav>
     </div>
