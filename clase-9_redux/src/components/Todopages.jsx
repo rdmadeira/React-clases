@@ -19,7 +19,11 @@ const Todopages = () => {
           <h3 className="todos-title">TODO LIST</h3>
           <div>
             <p>
-              Tienes <span className="todos-count"></span> Items por hacer!!{" "}
+              Tienes{" "}
+              <span className="todos-count">
+                {todoList.length - completes.length}
+              </span>{" "}
+              Items por hacer!!{" "}
             </p>
             {completes.length > 0 ? (
               <button
